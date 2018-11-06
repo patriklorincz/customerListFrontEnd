@@ -1,0 +1,82 @@
+<div class="container">
+  <h2>
+    Create customer
+  </h2>
+
+<div class="row">
+  <form [formGroup]="createCustomer" (ngSubmit)="save()">
+    <div class="col-md-4">
+      
+      <h6>Customer info</h6>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" class="form-control" formControlName="website">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" formControlName="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" formControlName="email">
+      </div>
+
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+
+    <div formArrayName="addresses">
+      <div *ngFor="let address of createCustomer.controls.addresses.controls; let i=index" class="col-md-4 addresses">
+
+        <h6 *ngIf="createCustomer.controls.addresses.controls.length < 2"> Postal Address</h6>
+        <h6 *ngIf="createCustomer.controls.addresses.controls.length > 1"> Invoicing Address</h6>
+
+        <div [formGroupName]="i">
+
+          <div class="form-group">
+            <label for="street">Street</label>
+            <input type="text" class="form-control" formControlName="street">
+          </div>
+    
+          <div class="form-group">
+            <label for="number">Number</label>
+            <input type="text" class="form-control" formControlName="number">
+          </div>
+    
+          <div class="form-group">
+            <label for="postcode">Postcode</label>
+            <input type="text" class="form-control" formControlName="postcode" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" formControlName="city">
+          </div>
+
+          <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" formControlName="country" required>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="margin-20" *ngIf="createCustomer.controls.addresses.controls.length < 2">
+          <a (click)="addAddress()" style="cursor: default" class="btn btn-success">
+            Add invoicing address
+          </a>
+      </div>
+
+    </div>
+      
+  </form>
+</div>
+
+</div>

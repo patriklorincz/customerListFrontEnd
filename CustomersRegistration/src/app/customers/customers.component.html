@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>
+    Customer list
+  </h2>
+
+  <div class="createButton">
+    <button (click)="createCustomer();" class="btn btn-success">Create customer</button>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Website</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      <tbody ng-if="customers">
+        <tr *ngFor="let customer of customers"  (click)="customerDetails(customer.customerId);">
+          <td>{{customer.name}}</td>
+          <td>{{customer.website}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

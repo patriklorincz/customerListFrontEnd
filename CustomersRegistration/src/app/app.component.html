@@ -1,0 +1,15 @@
+<div>
+  <div class="header">
+    <h1>
+      Customers Registration
+    </h1>
+  </div>
+  <div class="navgationBar">
+    <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/">Home</a>
+    <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/customers">Customers</a>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
